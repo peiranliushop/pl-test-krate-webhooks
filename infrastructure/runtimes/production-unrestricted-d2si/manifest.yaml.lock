@@ -1,0 +1,33 @@
+# THIS FILE IS AUTO-GENERATED. DO NOT MODIFY IT MANUALLY.
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web
+  labels:
+    name: web
+    env: production
+    app: pl-test
+    runtime-component: web
+  annotations:
+    ingress.shopify.io/tls-secretbuddy: "false"
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "false"
+    security.shopify.io/auth: oauth2
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: pl-test.example.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: web
+            port:
+              number: 80
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - pl-test.example.com
+    secretName: pl-test-example-com
+

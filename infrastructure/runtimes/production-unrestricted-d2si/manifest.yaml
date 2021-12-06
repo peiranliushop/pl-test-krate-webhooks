@@ -1,0 +1,18 @@
+---
+kind: RuntimeManifest
+apiVersion: platform.shopify.io/v1alpha1
+metadata:
+  name: production-unrestricted-d2si
+runtimeInfo:
+  appName: pl-test
+  env: production
+  appImage: gcr.io/images/apps/production/pl-test
+  domains:
+  - pl-test.example.com
+defaultBaseSource: github:Shopify/k8s_base/components
+components:
+- name: web
+  basePath: web/v14
+  resources:
+  - base: ingress.yaml
+
